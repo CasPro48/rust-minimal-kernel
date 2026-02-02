@@ -14,6 +14,9 @@ use core::panic::PanicInfo;
 /// Kernel entry point called by the bootloader
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
+    // Clear screen first
+    vga_buffer::WRITER.lock().clear_screen();
+    
     println!("========================================");
     println!("  Rust Minimal Kernel v0.1.0");
     println!("  A minimalistic OS written in Rust");
